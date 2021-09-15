@@ -68,18 +68,18 @@ function game() {
             }
         }        
 
-        function scoreChange(playerScore, computerScore) {
-            if (playRound(playerSelection(), computerSelection()).includes('win')) {
-                playerScore = playerScore + 1;
+       /* if (playRound(playerSelection(), computerSelection()).includes('win')) {
+                playerScore++;
             } else if (playRound(playerSelection(), computerSelection()).includes('lose')) {
-                computerScore = computerScore + 1;
+                computerScore++;
             } else {
                 ties = ties + 1;
             }
-        }
+        */
 
         console.log(playRound(playerSelection(), computerSelection()));
-        console.log(`The score is ${playerScore} to ${computerScore}`);
+        
+        // console.log(`The score is ${playerScore} to ${computerScore}`);
     }
 }
 
