@@ -18,3 +18,49 @@
         Log winner to console
 */
 
+let computerSelection = () => {
+    let number = Math.floor(Math.random()*3);
+    if (number === 0) {
+        return 'rock';
+    } else if (number === 1) {
+        return 'paper';
+    } else
+        return 'scissors';
+}
+
+function playerSelection() {
+    let choice = prompt('Choose your weapon', 'Rock');
+    return choice.toLowerCase();
+}
+
+let playRound = (player, computer) => {
+    if (player === 'rock') {
+        if (computer === 'rock') {
+            return 'Rock and rock! It\'s a tie!'
+        } else if (computer === 'paper') {
+            return 'You lose! Paper beats rock!';
+        } else {
+            return 'You win! Rock beats scissors!'
+        }
+    }
+    if (player === 'paper') {
+        if (computer === 'rock') {
+            return 'You win! Paper beats rock!'
+        } else if (computer === 'paper') {
+            return 'Paper and paper! It\'s a tie!'
+        } else {
+            return 'You lose! Scissors beat paper!'
+        }
+    }
+    if (player === 'scissors') {
+        if (computer === 'rock') {
+            return 'You lose! Rock beats scissors!'
+        } else if (computer === 'paper') {
+            return 'You win! Scissors beat paper'
+        } else {
+            return 'Scissors and scissors! It\'s a tie!'
+        }
+    }
+}
+
+console.log(playRound(playerSelection(), computerSelection()));
