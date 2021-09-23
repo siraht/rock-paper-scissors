@@ -11,7 +11,7 @@
             If computer = r then win
             If computer = p then tie
             If computer = s then lose
-        If user = s 
+        If user = s let button1 = document.createElement('button')
             If computer = r then lose
             If computer = p then tie
             If computer = s then win
@@ -19,10 +19,11 @@
 */
 
 function game() {
+
     let playerScore = 0;
     let computerScore = 0;
     let ties = 0;
-    for (let i = 0; i <5; i++) {
+    // for (let i = 0; i <5; i++) {
         let computerSelection = () => {
             let number = Math.floor(Math.random()*3);
             if (number === 0) {
@@ -80,7 +81,7 @@ function game() {
         console.log(playRound(playerSelection(), computerSelection()));
         
         // console.log(`The score is ${playerScore} to ${computerScore}`);
-    }
+    //}
 }
 
 console.log(game());
