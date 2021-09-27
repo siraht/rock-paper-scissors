@@ -1,0 +1,62 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.resultsbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.scorebox {
+    display: flex;
+    margin: 1rem 0 1rem 0;
+    background-color: gold;
+    border-radius: 4px;
+    border-width: 0px;
+    padding: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+}
+
+.results {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    margin: 0.5rem 0 0.5rem 0;
+}
+
+.tie {
+    background-color: grey;
+    padding: 1rem;
+    border-radius: 4px;
+    border-width: 0px;
+}
+
+.loss {
+    background-color: red;
+    padding: 1rem;
+    border-radius: 4px;
+    border-width: 0px;
+}
+
+.win {
+    background-color: green;
+    padding: 1rem;
+    border-radius: 4px;
+    border-width: 0px;
+}
+
+.button {
+    background-color: cornflowerblue;
+    border-radius: 4px;
+    border-width: 0px;
+    padding: 1rem;
+    width: auto;
+    font-size: 1rem;
+}

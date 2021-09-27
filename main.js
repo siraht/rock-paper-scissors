@@ -23,48 +23,133 @@ function game() {
     let playerScore = 0;
     let computerScore = 0;
     let ties = 0;
-    // for (let i = 0; i <5; i++) {
-        let computerSelection = () => {
-            let number = Math.floor(Math.random()*3);
-            if (number === 0) {
-                return 'rock';
-            } else if (number === 1) {
-                return 'paper';
-            } else
-                return 'scissors';
+    let computerSelection = () => {
+        let number = Math.floor(Math.random()*3);
+        if (number === 0) {
+            return 'rock';
+        } else if (number === 1) {
+            return 'paper';
+        } else
+            return 'scissors';
+    }
+
+        const rockbtnv = document.querySelector('#rockbtn');
+        const paperbtnv = document.querySelector('#paperbtn');
+        const scissorsbtnv = document.querySelector('#scissorsbtn');
+        const results = document.querySelector('.resultsbox');
+        const scorebox = document.querySelector('.scorebox');
+        let resultsArray = new Array();
+        let scoreString;
+
+        let calculateWinner = (resultsArray) => {
+            if (resultsArray[0] == 0) {
+                ties = ties + 1;
+            } else if (resultsArray[0] == 1) {
+                computerScore = computerScore + 1;
+            } else {
+                playerScore = playerScore + 1;
+            }
         }
-        
+
+        let decideTextColor = (resultsArray) => {
+            if (resultsArray[0] == 0) {
+                rockplay.classList.add('tie')
+            } else if (resultsArray[0] == 1) {
+                rockplay.classList.add('loss')
+            } else {
+                rockplay.classList.add('win')
+            }
+        }
+
         function playerSelection() {
-            let choice = prompt('Choose your weapon', 'Rock');
-            return choice.toLowerCase();
-        }
         
+            rockbtnv.addEventListener('click', () => {
+                const rockplay = document.createElement('div');
+                rockplay.classList.add('results');
+                playRound('rock', computerSelection());
+                    if (resultsArray[0] == 0) {
+                        rockplay.classList.add('tie')
+                    } else if (resultsArray[0] == 1) {
+                        rockplay.classList.add('loss')
+                    } else {
+                        rockplay.classList.add('win')
+                    }
+                rockplay.textContent = (resultsArray[1]);
+                results.appendChild(rockplay);
+                calculateWinner(resultsArray);
+                scorebox.textContent = `Player: ${playerScore} | Computer: ${computerScore}`;
+            })
+        
+            paperbtnv.addEventListener('click', () => {
+                const paperplay = document.createElement('div');
+                paperplay.classList.add('results');
+                playRound('paper', computerSelection());
+                    if (resultsArray[0] == 0) {
+                        paperplay.classList.add('tie')
+                    } else if (resultsArray[0] == 1) {
+                        paperplay.classList.add('loss')
+                    } else {
+                        paperplay.classList.add('win')
+                    }
+                paperplay.textContent = (resultsArray[1]);
+                results.appendChild(paperplay);
+                calculateWinner(resultsArray);
+                scorebox.textContent = `Player: ${playerScore} | Computer: ${computerScore}`;
+            })
+        
+            scissorsbtnv.addEventListener('click', () => {
+                const scissorsplay = document.createElement('div');
+                scissorsplay.classList.add('results');
+                playRound('scissors', computerSelection());
+                if (resultsArray[0] == 0) {
+                    scissorsplay.classList.add('tie')
+                } else if (resultsArray[0] == 1) {
+                    scissorsplay.classList.add('loss')
+                } else {
+                    scissorsplay.classList.add('win')
+                }
+                scissorsplay.textContent = (resultsArray[1]);
+                results.appendChild(scissorsplay);
+                calculateWinner(resultsArray);
+                scorebox.textContent = `Player: ${playerScore} | Computer: ${computerScore}`;
+            })
+        }
+
         let playRound = (player, computer) => {
             if (player === 'rock') {
                 if (computer === 'rock') {
-                    return 'Rock and rock! It\'s a tie!'
+                    resultsArray = [0, 'Rock and rock! It\'s a tie!'];
+                    return resultsArray;
                 } else if (computer === 'paper') {
-                    return 'You lose! Paper beats rock!';
+                    resultsArray = [1, 'You lose! Paper beats rock!'];
+                    return resultsArray;
                 } else {
-                    return 'You win! Rock beats scissors!'
+                    resultsArray = [2, 'You win! Rock beats scissors!'];
+                    return resultsArray;
                 }
             }
             if (player === 'paper') {
                 if (computer === 'rock') {
-                    return 'You win! Paper beats rock!'
+                    resultsArray = [2, 'You win! Paper beats rock!'];
+                    return resultsArray;
                 } else if (computer === 'paper') {
-                    return 'Paper and paper! It\'s a tie!'
+                    resultsArray = [0, 'Paper and paper! It\'s a tie!'];
+                    return resultsArray;
                 } else {
-                    return 'You lose! Scissors beat paper!'
+                    resultsArray = [1, 'You lose! Scissors beat paper!'];
+                    return  resultsArray;
                 }
             }
             if (player === 'scissors') {
                 if (computer === 'rock') {
-                    return 'You lose! Rock beats scissors!'
+                    resultsArray = [1, 'You lose! Rock beats scissors!']
+                    return resultsArray;
                 } else if (computer === 'paper') {
-                    return 'You win! Scissors beat paper'
+                    resultsArray = [2, 'You win! Scissors beat paper']
+                    return resultsArray;
                 } else {
-                    return 'Scissors and scissors! It\'s a tie!'
+                    resultsArray = [0, 'Scissors and scissors! It\'s a tie!']
+                    return resultsArray;
                 }
             }
         }        
