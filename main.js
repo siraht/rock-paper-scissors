@@ -51,16 +51,6 @@ function game() {
             }
         }
 
-        let decideTextColor = (resultsArray) => {
-            if (resultsArray[0] == 0) {
-                rockplay.classList.add('tie')
-            } else if (resultsArray[0] == 1) {
-                rockplay.classList.add('loss')
-            } else {
-                rockplay.classList.add('win')
-            }
-        }
-
         function playerSelection() {
         
             rockbtnv.addEventListener('click', () => {
@@ -153,20 +143,11 @@ function game() {
                 }
             }
         }        
-
-       /* if (playRound(playerSelection(), computerSelection()).includes('win')) {
-                playerScore++;
-            } else if (playRound(playerSelection(), computerSelection()).includes('lose')) {
-                computerScore++;
-            } else {
-                ties = ties + 1;
-            }
-        */
+       
 
         console.log(playRound(playerSelection(), computerSelection()));
         
-        // console.log(`The score is ${playerScore} to ${computerScore}`);
-    //}
+    
 }
 
 console.log(game());
